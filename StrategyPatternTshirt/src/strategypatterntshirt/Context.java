@@ -37,7 +37,7 @@ public class Context {
         HashMap<String, Float> arrayOfPays = new HashMap<>();
 
         for (IPayment payment : payments) {
-
+            //System.out.println(payment.getClass().getSimpleName());
             arrayOfPays.put(choosePaymentMethod(payment.getClass().getSimpleName()),
                     payment.pay(fabric, color, size));
         }
@@ -45,16 +45,13 @@ public class Context {
     }
 
     public String choosePaymentMethod(String paymentMethod) {
-        switch (paymentMethod) {
-            case "CashPayment":
-                paymentMethod = "Pay with cash";
-                break;
-            case "MoneyBankTranfer":
-                paymentMethod = "Pay with Bank Transfer";
-                break;
-            case "CreditDebitCard":
-                paymentMethod = "Pay with credit card";
-                break;
+
+        if (paymentMethod.equals("CashPayment")) {
+            paymentMethod = "Pay with cash";
+        } else if (paymentMethod.equals("MoneyBankTranfer")) {
+            paymentMethod = "Pay with Bank Transfer";
+        } else if (paymentMethod.equals("CreditDebitCard")) {
+            paymentMethod = "Pay with credit card";
         }
 
         return paymentMethod;
