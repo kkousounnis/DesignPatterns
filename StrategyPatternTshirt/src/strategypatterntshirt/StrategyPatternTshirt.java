@@ -39,6 +39,7 @@ public class StrategyPatternTshirt {
         }
         return (tshirts);
     }
+    static int i = 0;
 
     public static void makeAllPossiblePaymentsWithAllTshirts(List<Tshirt> tshirts) {
         List<IPayment> payments = Arrays.asList(new IPayment[]{new CreditDebitCard(), new MoneyBankTranfer(), new CashPayment()});   // new ArrayList<>();
@@ -46,11 +47,30 @@ public class StrategyPatternTshirt {
         HashMap<String, Float> allPayments = new HashMap<>();
         Context contextAll = new Context(payments);
 
+        List<HashMap<String, Float>> TShirtsPayments = new ArrayList<HashMap<String, Float>>();
+
         for (Tshirt tshirt : tshirts) {
-            System.out.println(tshirt);
-            System.out.println(contextAll.executePayments(tshirt.getPrice(),
-                    tshirt.getColor(), tshirt.getSize(), tshirt.getFabric()));
+            //System.out.println(tshirt);
+            allPayments = contextAll.executePayments(tshirt.getPrice(),
+                    tshirt.getColor(), tshirt.getSize(), tshirt.getFabric());
+            TShirtsPayments.add(allPayments);
         }
+
+        TShirtsPayments.forEach(
+                action
+                -> {
+            System.out.println(tshirts.get(i++));
+
+            action.entrySet().forEach(entry -> {
+
+                System.out.println(entry.getKey() + " the price is " + entry.getValue());
+
+            });
+
+            System.out.println("---------------------------------------------");
+
+        });
+
     }
 
     /*
@@ -71,6 +91,5 @@ public class StrategyPatternTshirt {
         return (generatedString);
 
     }
-    
 
 }
