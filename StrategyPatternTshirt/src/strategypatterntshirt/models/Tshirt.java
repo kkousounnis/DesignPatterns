@@ -6,8 +6,8 @@ public class Tshirt {
     private Color color;
     private Size size;
     private Fabric fabric;
+    private float price;
 
-    //color, size και fabric
     public Tshirt() {
     }
 
@@ -16,9 +16,8 @@ public class Tshirt {
         this.color = color;
         this.size = size;
         this.fabric = fabric;
-    }
 
-    
+    }
 
     public Fabric getFabric() {
         return fabric;
@@ -51,5 +50,26 @@ public class Tshirt {
     public void setName(String Name) {
         this.Name = Name;
     }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Tshirt{Name=").append(Name);
+        sb.append(", color=").append(color);
+        sb.append(", size=").append(size);
+        sb.append(", fabric=").append(fabric);
+        sb.append('}');
+        return sb.toString();
+    }
+    
+    
 
 }
