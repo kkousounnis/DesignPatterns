@@ -45,7 +45,7 @@ public class StrategyPatternTshirt {
         List<IPayment> payments = Arrays.asList(new IPayment[]{new CreditDebitCard(), new MoneyBankTranfer(), new CashPayment()});   // new ArrayList<>();
 
         HashMap<String, Float> allPayments = new HashMap<>();
-        Context contextAll = new Context(payments);
+        ExecutPay contextAll = new ExecutPay(payments);
 
         List<HashMap<String, Float>> TShirtsPayments = new ArrayList<HashMap<String, Float>>();
 
